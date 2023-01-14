@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
+import 'package:food_delivery/widgets/expandable_text.dart';
 
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
@@ -18,6 +19,7 @@ class PopularFoodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // background image
           Positioned(
               left: 0,
               right: 0,
@@ -29,6 +31,8 @@ class PopularFoodDetail extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: AssetImage("assets/images/food.jpeg"))),
               )),
+
+          // icon widgets
           Positioned(
               top: Dimensions.height45,
               left: Dimensions.width20,
@@ -40,6 +44,8 @@ class PopularFoodDetail extends StatelessWidget {
                   AppIcon(icon: Icons.shopping_cart_outlined),
                 ],
               )),
+
+          // introduction of food
           Positioned(
               left: 0,
               right: 0,
@@ -65,10 +71,22 @@ class PopularFoodDetail extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: "Introduce")
+                    BigText(text: "Introduce"),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: ExpandableText(
+                            text:
+                                "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions (cheeky easy sub below!), fresh coriander/ cilantro, then par boiled lightly spiced rice, Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions (cheeky easy sub below!), fresh coriander/ cilantro, then par boiled lightly spiced rice"),
+                      ),
+                    ),
                   ],
                 ),
-              ))
+              )),
+
+          //  expandable text widget
         ],
       ),
       bottomNavigationBar: Container(
@@ -103,9 +121,13 @@ class PopularFoodDetail extends StatelessWidget {
                     Icons.remove,
                     color: AppColors.signColor,
                   ),
-                  SizedBox(width: Dimensions.width10 / 2,),
+                  SizedBox(
+                    width: Dimensions.width10 / 2,
+                  ),
                   BigText(text: "0"),
-                  SizedBox(width: Dimensions.width10 / 2,),
+                  SizedBox(
+                    width: Dimensions.width10 / 2,
+                  ),
                   Icon(
                     Icons.add,
                     color: AppColors.signColor,
@@ -120,7 +142,10 @@ class PopularFoodDetail extends StatelessWidget {
                 left: Dimensions.width20,
                 right: Dimensions.width20,
               ),
-              child: BigText(text: "\$10 | Add to cart", color: Colors.white,),
+              child: BigText(
+                text: "\$10 | Add to cart",
+                color: Colors.white,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: AppColors.mainColor,
